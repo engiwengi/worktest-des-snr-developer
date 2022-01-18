@@ -1,0 +1,18 @@
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Home</button>
+    <button mat-menu-item>Books</button>
+  </mat-menu>
+  <span>DES Library</span>
+</mat-toolbar>
+
+<mat-list role="list">
+  <mat-list-item *ngFor="let book of books | async" role="listitem">
+    {{book.name}}
+  </mat-list-item>
+</mat-list>
+
+<router-outlet></router-outlet>
