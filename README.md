@@ -13,6 +13,7 @@ The front-end is implemented in Angular 9 and the back-end is a web API implemen
 
 ## Tasks
 - The project is not compiling so it needs to be fixed.
+- Do not commit unnecessary files.
 - Implement a routing mechanism for the home and books pages.
 - Add a button on the home page that will redirect users to the list of books.
 - Display a list of books on the books page.
