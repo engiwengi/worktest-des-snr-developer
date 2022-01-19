@@ -1,6 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { CookieModule, CookieService } from 'ngx-cookie';
 import { BooksComponent } from './books.component';
 import { BooksService } from './books.service';
 
@@ -11,9 +12,9 @@ describe('BooksComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, CookieModule.forRoot()],
       declarations: [BooksComponent],
-      providers: [BooksService]
+      providers: [BooksService, CookieService]
     })
       .compileComponents();
   }));

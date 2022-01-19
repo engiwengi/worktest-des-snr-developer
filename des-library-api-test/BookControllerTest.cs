@@ -17,7 +17,7 @@ namespace des_library_api_test.Controllers
         [SetUp]
         public void Init()
         {
-            _controller = new BookController();
+            _controller = new BookController(new BookRepository(), new UserRepository());
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace des_library_api_test.Controllers
 
             var unborrowedBook = books.First(b => b.BorrowedBy == Guid.Empty);
 
-            var result = _controller.BorrowBook(unborrowedBook.Id, newUser.Id);
+            var result = _controller.BorrowBook(unborrowedBook.Id, newUser);
 
             Assert.That(result is OkResult);
 
@@ -53,7 +53,7 @@ namespace des_library_api_test.Controllers
 
             var unborrowedBook = books.First(b => b.BorrowedBy != Guid.Empty);
 
-            var result = _controller.BorrowBook(unborrowedBook.Id, newUser.Id);
+            var result = _controller.BorrowBook(unborrowedBook.Id, newUser);
 
             Assert.That(result is ForbidResult);
         }
@@ -66,7 +66,7 @@ namespace des_library_api_test.Controllers
 
             var unborrowedBook = books.First(b => b.BorrowedBy == Guid.Empty);
 
-            var result = _controller.ReturnBook(unborrowedBook.Id, newUser.Id);
+            var result = _controller.ReturnBook(unborrowedBook.Id, newUser);
 
             Assert.That(result is ForbidResult);
         }
