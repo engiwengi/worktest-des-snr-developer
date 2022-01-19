@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "des-library-api", "des-library-api\des-library-api.csproj", "{5A49BC72-B7C8-4C74-9EB8-BA2A77779028}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "des-library-api", "des-library-api\des-library-api.csproj", "{5A49BC72-B7C8-4C74-9EB8-BA2A77779028}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "des-library-api-test", "des-library-api-test\des-library-api-test.csproj", "{0799D6B1-0D08-4E9D-AF88-060A17489DE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +17,15 @@ Global
 		{5A49BC72-B7C8-4C74-9EB8-BA2A77779028}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A49BC72-B7C8-4C74-9EB8-BA2A77779028}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A49BC72-B7C8-4C74-9EB8-BA2A77779028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0799D6B1-0D08-4E9D-AF88-060A17489DE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0799D6B1-0D08-4E9D-AF88-060A17489DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0799D6B1-0D08-4E9D-AF88-060A17489DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0799D6B1-0D08-4E9D-AF88-060A17489DE4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {521AB989-5C9A-4469-9038-EE0B185A7C87}
 	EndGlobalSection
 EndGlobal

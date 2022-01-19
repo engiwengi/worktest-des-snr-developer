@@ -1,20 +1,27 @@
 using System.Collections.Generic;
+using System.Linq;
 using des_library_api.Domain;
 
 namespace des_library_api.Infra.Repository
 {
     public class BookRepository
     {
-        private readonly IEnumerable<Book> _books;
+        private readonly IDictionary<int, Book> _books;
 
         public BookRepository(List<Book> books)
         {
-            _books = books;
+            _books = books.ToDictionary(book => book.Id);
         }
 
         public IEnumerable<Book> GetAll()
         {
-            return _books;
+            return _books.Values;
+        }
+        
+        public Book Get(int id)
+        {
+            _books.TryGetValue(id, out var value);
+            return value;
         }
     }
 }
