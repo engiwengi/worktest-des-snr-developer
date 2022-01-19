@@ -8,12 +8,12 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CookieModule, CookieService } from 'ngx-cookie';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BooksComponent } from './books/books.component';
 import { BooksService } from './books/books.service';
 import { HomeComponent } from './home/home.component';
-
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ import { HomeComponent } from './home/home.component';
     BooksComponent
   ],
   imports: [
+    CookieModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -34,7 +35,8 @@ import { HomeComponent } from './home/home.component';
     MatListModule
   ],
   providers: [
-    BooksService
+    BooksService,
+    CookieService,
   ],
   bootstrap: [AppComponent]
 })
