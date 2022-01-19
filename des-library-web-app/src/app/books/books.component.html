@@ -3,5 +3,7 @@
 <mat-list role="list">
     <mat-list-item *ngFor="let book of books | async" role="listitem">
         {{book.name}}
+        <button mat-raised-button [color]="buttonColor(book)" [disabled]="borrowedByOther(book)"
+            [textContent]="textContent(book)" (click)="borrow(book)"></button>
     </mat-list-item>
 </mat-list>

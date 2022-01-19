@@ -7,11 +7,12 @@ namespace des_library_api.Infra.Repository
 {
     public class UserRepository
     {
+        public static Guid ExampleUser = Guid.NewGuid();
         private readonly IDictionary<Guid, User> _users;
 
-        public UserRepository(List<User> users)
+        public UserRepository()
         {
-            _users = users.ToDictionary(user => user.Id);
+            _users = Enumerable.Repeat(new User() { Id = ExampleUser }, 1).ToDictionary(user => user.Id);
         }
 
         public User Get(Guid id)
@@ -20,10 +21,17 @@ namespace des_library_api.Infra.Repository
             return value;
         }
 
+        public IEnumerable<Guid> GetAll()
+        {
+            return _users.Keys;
+        }
+
         public User Create()
         {
             var guid = Guid.NewGuid();
+            Console.WriteLine($"new user: {guid}");
             var user = new User() { Id = guid };
+
             _users.Add(user.Id, user);
             return user;
         }

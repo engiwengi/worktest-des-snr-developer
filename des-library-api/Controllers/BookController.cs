@@ -13,21 +13,10 @@ namespace des_library_api.Controllers
         private readonly BookRepository _bookRepository;
         private readonly UserRepository _userRepository;
 
-        public BookController()
+        public BookController(BookRepository bookRepository, UserRepository userRepository)
         {
-            var exampleUser = new User() { Id = Guid.NewGuid() };
-
-            var bs = new List<Book>()
-            {
-                new Book { Id = 1, Name = "Clean Code: A Handbook of Agile Software Craftsmanship", Author = "Robert C. Martin", Language = "English", Pages = 464 },
-                new Book { Id = 2, Name = "Test Driven Development: By Example", Author = "Kent Beck", Language = "English", Pages = 240},
-                new Book { Id = 3, Name = "Design Patterns: Elements of Reusable Object-Oriented Software", Author = "Erich Gamma; Richard Helm; Ralph Johnson; John Vlissides", Language = "English", Pages = 416, BorrowedBy = exampleUser.Id},
-                new Book { Id = 4, Name = "Angular in Action", Author = "Jeremy Wilken", Language = "English", Pages = 320}
-            };
-
-
-            _bookRepository = new BookRepository(bs);
-            _userRepository = new UserRepository(new List<User>() { exampleUser });
+            _bookRepository = bookRepository;
+            _userRepository = userRepository;
         }
 
         [HttpGet]
@@ -42,12 +31,11 @@ namespace des_library_api.Controllers
             return _bookRepository.Get(bookId);
         }
 
-
-        [HttpPut("borrow/{id}")]
-        public ActionResult BorrowBook([FromRoute] int bookId, [FromBody] Guid userId)
+        [HttpPut("borrow/{bookId}")]
+        public IActionResult BorrowBook([FromRoute] int bookId, [FromBody] User requestUser)
         {
             var book = _bookRepository.Get(bookId);
-            var user = _userRepository.Get(userId);
+            var user = _userRepository.Get(requestUser.Id);
 
             if (book is null || user is null)
             {
@@ -65,11 +53,11 @@ namespace des_library_api.Controllers
         }
 
 
-        [HttpPut("return/{id}")]
-        public ActionResult ReturnBook([FromRoute] int bookId, [FromBody] Guid userId)
+        [HttpPut("return/{bookId}")]
+        public IActionResult ReturnBook([FromRoute] int bookId, [FromBody] User requestUser)
         {
             var book = _bookRepository.Get(bookId);
-            var user = _userRepository.Get(userId);
+            var user = _userRepository.Get(requestUser.Id);
 
             if (book is null || user is null)
             {
