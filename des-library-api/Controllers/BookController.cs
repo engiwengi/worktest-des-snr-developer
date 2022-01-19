@@ -13,7 +13,7 @@ namespace des_library_api.Controllers
 
         public BookController()
         {
-            var bs = new[]
+            var bs = new List<Book>()
             {
                 new Book { Id = 1, Name = "Clean Code: A Handbook of Agile Software Craftsmanship", Author = "Robert C. Martin", Language = "English", Pages = 464 },
                 new Book { Id = 2, Name = "Test Driven Development: By Example", Author = "Kent Beck", Language = "English", Pages = 240},
@@ -23,7 +23,7 @@ namespace des_library_api.Controllers
             _bookRepository = new BookRepository(bs);
         }
 
-        [HttpPost]
+        [HttpGet]
         public IEnumerable<Book> Get()
         {
             return _bookRepository.GetAll();
