@@ -1,1 +1,7 @@
 <p>books works!</p>
+
+<mat-list role="list">
+    <mat-list-item *ngFor="let book of books | async" role="listitem">
+        {{book.name}}
+    </mat-list-item>
+</mat-list>
