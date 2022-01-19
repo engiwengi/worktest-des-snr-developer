@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using des_library_api.Infra.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,8 @@ namespace des_library_api
             {
                 corsOptions.AddPolicy(AllowAnyPolicy, builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
+            services.AddSingleton<BookRepository>();
+            services.AddSingleton<UserRepository>();
             services.AddControllers();
         }
 
