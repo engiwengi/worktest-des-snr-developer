@@ -1,0 +1,4 @@
+**/node_modules
+**/Debug
+/.vs
+**/obj

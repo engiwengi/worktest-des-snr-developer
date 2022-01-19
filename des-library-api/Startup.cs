@@ -15,6 +15,7 @@ namespace des_library_api
 {
     public class Startup
     {
+        const string AllowAnyPolicy = "AllowAnyPolicy";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,7 +26,10 @@ namespace des_library_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(corsOptions =>
+            {
+                corsOptions.AddPolicy(AllowAnyPolicy, builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
             services.AddControllers();
         }
 
@@ -40,6 +44,8 @@ namespace des_library_api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(AllowAnyPolicy);
 
             app.UseAuthorization();
 

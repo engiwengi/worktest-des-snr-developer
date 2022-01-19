@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {BooksService} from './books/books.service';
-import {Book} from './books/book';
-import {Observable} from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Book } from './books/book';
+import { BooksService } from './books/books.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 })
 export class AppComponent implements OnInit {
   books: Observable<Book[]>;
+  title: string = 'front-end';
 
   constructor(private booksService: BooksService) {
   }
